@@ -19,7 +19,10 @@ function getNotesRequest () {
 function getNotesSuccess (data) {
   return {
     type: notesConstants.NOTES_GET_SUCCESS,
-    notes: data
+    notes: data.map(note => ({
+      ...note,
+      note: note.note ? JSON.parse(note.note) : null
+    }))
   }
 }
 

@@ -8,7 +8,7 @@ const getNoteBySelectedId = createSelector(
   selctedNoteIdSelector,
   (notes, selectedId) => {
     if (selectedId) return notes.filter(note => note.id === selectedId)[0]
-    return { id: null, title: '', body: '' }
+    return { id: null, title: '', note: '' }
   }
 )
 

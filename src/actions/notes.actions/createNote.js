@@ -7,7 +7,7 @@ export default function createNote () {
     newNote: {
       id: uuid(),
       title: 'New Note',
-      body: ''
+      note: ''
     }
   }
 }

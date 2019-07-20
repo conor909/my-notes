@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import { notesActions } from '../actions'
-import { NotesMenu } from '../components';
+import { NotesMenu } from '../components'
 
 function NavBarContainer (props) {
   return (
@@ -16,7 +16,7 @@ function NavBarContainer (props) {
           </div>
         </Nav>
         <Button
-          variant='outline-success'
+          variant='outline-primary'
           onClick={props.handleCreateNote}>
             + Create
         </Button>

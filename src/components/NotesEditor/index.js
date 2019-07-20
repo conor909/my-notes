@@ -4,11 +4,10 @@ import { connect } from 'react-redux'
 import Editor from './Editor'
 import { notesSelectors } from '../../selectors'
 
-function NotesMenu (props) {
-  console.log(props)
-  return (
-    <Editor note={props.note} />
-  )
+function EditorContainer (props) {
+  return props.note.id
+    ? <Editor note={props.note} />
+    : null
 }
 
 function mapStateToProps (state) {
@@ -23,4 +22,4 @@ function dispatchToProps (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, dispatchToProps)(NotesMenu)
+export const NotesEditor = connect(mapStateToProps, dispatchToProps)(EditorContainer)
