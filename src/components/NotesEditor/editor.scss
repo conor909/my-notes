@@ -22,6 +22,12 @@
     border-top: 1px solid $border-color;
   }
 
+  .editor--action-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
   .RichEditor-root {
     background: #fff;
     border: 1px solid #ddd;

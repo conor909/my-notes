@@ -8,14 +8,16 @@ import 'draft-js/dist/Draft.css'
 import './editor.scss'
 
 export default function (props) {
-  const note = props.note
+  const { note } = props
   const [editorState, setEditorState] = useState(getNoteState(props.note))
   const [noteTitle, setNoteTitle] = useState(note.title)
+  const [isEdited, setIsEdited] = useState(false)
 
   useEffect(() => {
     setNoteTitle(note.title)
     setEditorState(getNoteState(note))
-  }, [note])
+    setIsEdited(false)
+  }, [props.note])
 
   function getNoteState (note) {
     if (note.note) {
@@ -31,6 +33,7 @@ export default function (props) {
 
   function handleChangeEditorState (newState) {
     setEditorState(newState)
+    setIsEdited(true)
   }
 
   function handleKeyCommand (command, editorState) {
@@ -76,17 +79,16 @@ export default function (props) {
   function handleSaveNote () {
     props.saveNote({
       id: props.note.id,
-      note: getContentString(),
+      note: getContentString(editorState),
       title: noteTitle
     })
+    setIsEdited(false)
   }
 
-  function getContentString () {
-    const contentState = editorState.getCurrentContent()
+  function getContentString (state) {
+    const contentState = state.getCurrentContent()
     return JSON.stringify(convertToRaw(contentState))
   }
-
-  const hasBeenEdited = getContentString() !== props.note.note || noteTitle !== props.note.title
 
   return (
     <div className='editor'>
@@ -112,12 +114,14 @@ export default function (props) {
           placeholder='Tell a story...'
           spellCheck />
       </div>
-      <Button
-        disabled={!hasBeenEdited}
-        variant='outline-success'
-        onClick={handleSaveNote}>
-        Save
-      </Button>
+      <div className='editor--action-buttons'>
+        <Button
+          disabled={!isEdited}
+          variant='outline-success'
+          onClick={handleSaveNote}>
+            Save
+        </Button>
+      </div>
     </div>
   )
 }
