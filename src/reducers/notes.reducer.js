@@ -27,24 +27,20 @@ export function notes (state = initialState, action) {
       return update(state, {
         selectedNoteId: { $set: action.noteId }
       })
-    case notesConstants.NOTE_CREATE:
+    case notesConstants.NOTE_SAVE_REQUEST:
       return update(state, {
-        selectedNoteId: { $set: action.newNote.id },
-        notes: { $push: [action.newNote] }
+        savingNote: { $set: true }
       })
-    case notesConstants.SAVE_REQUEST:
-      return {
-        savingNote: true
-      }
-    case notesConstants.SAVE_SUCCESS:
-      return {
-        savingNote: false,
-        note: action.note
-      }
-    case notesConstants.SAVE_FAILURE:
-      return {
-        savingNote: false
-      }
+    case notesConstants.NOTE_SAVE_SUCCESS:
+      return update(state, {
+        savingNote: { $set: false },
+        selectedNoteId: { $set: action.note.id },
+        notes: { $push: [action.note] }
+      })
+    case notesConstants.NOTE_SAVE_FAILURE:
+      return update(state, {
+        savingNote: { $set: false }
+      })
     case notesConstants.UPDATE_REQUEST:
       return {
         savingNote: true

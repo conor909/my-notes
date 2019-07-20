@@ -9,6 +9,7 @@ export function apiMiddleware ({ dispatch }) {
     }
     const { request, success, failure } = action.passToActions
     dispatch(request())
+
     axios({
       url: 'http://localhost:8080' + action.url,
       method: action.method || 'get',
@@ -19,8 +20,8 @@ export function apiMiddleware ({ dispatch }) {
       }
     })
       .then((response) => {
-        if (response.status === 200) {
-          dispatch(success(response.data.data))
+        if (response.data.message === 'Success') {
+          dispatch(success(response.data.data, action.passToReducers))
         } else {
           dispatch(failure(response.message))
         }

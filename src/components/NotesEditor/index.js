@@ -1,13 +1,16 @@
 import React from 'react'
-// import { notesActions } from '../../actions'
+import { notesActions } from '../../actions'
 import { connect } from 'react-redux'
 import Editor from './Editor'
 import { notesSelectors } from '../../selectors'
 
 function EditorContainer (props) {
-  return props.note.id
-    ? <Editor note={props.note} />
-    : null
+  if (!props.note.id) return null
+  return (
+    <Editor
+      note={props.note}
+      updateNote={props.updateNote} />
+  )
 }
 
 function mapStateToProps (state) {
@@ -18,7 +21,7 @@ function mapStateToProps (state) {
 
 function dispatchToProps (dispatch) {
   return {
-    // saveNote: (noteId) => dispatch(notesActions.saveNote(noteId))
+    updateNote: (note) => dispatch(notesActions.updateNote(note))
   }
 }
 

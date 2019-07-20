@@ -71,6 +71,14 @@ export default function (props) {
     )
   }
 
+  function handleUpdateNote () {
+    props.updateNote({
+      id: props.note.id,
+      note: JSON.stringify(editorState),
+      title: noteTitle
+    })
+  }
+
   return (
     <div className='editor'>
       <Form.Control
@@ -101,7 +109,7 @@ export default function (props) {
         note.note !== editorState &&
         <Button
           variant='outline-success'
-          onClick={props.onSaveNote}>
+          onClick={handleUpdateNote}>
           Save
         </Button>
       }
