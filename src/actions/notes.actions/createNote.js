@@ -2,7 +2,7 @@ import { notesConstants, middlewareConstants } from '../../constants'
 
 const NEW_NOTE = {
   title: 'New Note',
-  note: null
+  note: ''
 }
 
 export default function createNote () {
@@ -20,14 +20,10 @@ export default function createNote () {
 }
 
 function createNoteRequest () {
-  return { type: notesConstants.NOTE_SAVE_REQUEST }
-}
-
-function createNoteSuccess (data, passToReducers) {
   return (dispatch, getStore) => {
     dispatch({
-      type: notesConstants.NOTE_SAVE_SUCCESS,
-      note: {
+      type: notesConstants.NOTE_CREATE_REQUEST,
+      newNote: {
         ...NEW_NOTE,
         id: getStore().notes.notes.length + 1
       }
@@ -35,8 +31,17 @@ function createNoteSuccess (data, passToReducers) {
   }
 }
 
+function createNoteSuccess (data, passToReducers) {
+  return (dispatch, getStore) => {
+    dispatch({
+      type: notesConstants.NOTE_CREATE_SUCCESS,
+      selectedNoteId: getStore().notes.notes.length
+    })
+  }
+}
+
 function createNoteFailure () {
   return {
-    type: notesConstants.NOTE_SAVE_FAILURE
+    type: notesConstants.NOTE_CREATE_FAILURE
   }
 }

@@ -8,6 +8,7 @@ export default function (props) {
         props.notes.map(note => (
           <MenuItem
             key={note.id}
+            isSelected={note.id === props.selectedNoteId}
             title={note.title}
             id={note.id}
             onSelectNote={props.onSelectNote} />
@@ -24,8 +25,9 @@ function MenuItem (props) {
   return (
     <li
       onClick={handleSelectNote}
-      className='notes--menu-item'>
+      className={`notes--menu-item ${props.isSelected ? 'active' : ''}`}>
       <div>{ props.title }</div>
+      <i className='fas fa-chevron-right' />
     </li>
   )
 }

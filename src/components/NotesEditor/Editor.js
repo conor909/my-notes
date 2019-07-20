@@ -73,14 +73,20 @@ export default function (props) {
     )
   }
 
-  function handleUpdateNote () {
-    const contentState = editorState.getCurrentContent()
+  function handleSaveNote () {
     props.saveNote({
       id: props.note.id,
-      note: JSON.stringify(convertToRaw(contentState)),
+      note: getContentString(),
       title: noteTitle
     })
   }
+
+  function getContentString () {
+    const contentState = editorState.getCurrentContent()
+    return JSON.stringify(convertToRaw(contentState))
+  }
+
+  // const hasBeenEdited = getContentString() !== props.note.note
 
   return (
     <div className='editor'>
@@ -106,13 +112,11 @@ export default function (props) {
           placeholder='Tell a story...'
           spellCheck />
       </div>
-      {
-        <Button
-          variant='outline-success'
-          onClick={handleUpdateNote}>
-          Save
-        </Button>
-      }
+      <Button
+        variant='outline-success'
+        onClick={handleSaveNote}>
+        Save
+      </Button>
     </div>
   )
 }

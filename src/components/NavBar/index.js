@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Navbar, Nav, Button } from 'react-bootstrap'
-import { notesActions } from '../actions'
-import { NotesMenu } from '../components'
+import { notesActions } from '../../actions'
+import { NotesMenu } from '../../components'
+import './nav-bar.scss'
 
 function NavBarContainer (props) {
   return (
@@ -11,7 +12,7 @@ function NavBarContainer (props) {
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
       <Navbar.Collapse id='basic-navbar-nav'>
         <Nav className='mr-auto'>
-          <div className='d-none d-sm-block d-md-block d-lg-none'>
+          <div className='nav-bar--mobile-menu d-md-none d-lg-none d-xl-none'>
             <NotesMenu />
           </div>
         </Nav>

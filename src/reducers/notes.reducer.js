@@ -4,6 +4,7 @@ import update from 'immutability-helper'
 const initialState = {
   loadingNotes: false,
   savingNote: false,
+  creatingNote: false,
   selectedNoteId: null,
   notes: []
 }
@@ -26,6 +27,20 @@ export function notes (state = initialState, action) {
     case notesConstants.NOTE_SELECT:
       return update(state, {
         selectedNoteId: { $set: action.noteId }
+      })
+    case notesConstants.NOTE_CREATE_REQUEST:
+      return update(state, {
+        creatingNote: { $set: true },
+        notes: { $push: [action.newNote] }
+      })
+    case notesConstants.NOTE_CREATE_SUCCESS:
+      return update(state, {
+        selectedNoteId: { $set: action.selectedNoteId },
+        creatingNote: { $set: false }
+      })
+    case notesConstants.NOTE_CREATE_FAILURE:
+      return update(state, {
+        creatingNote: { $set: false }
       })
     case notesConstants.NOTE_SAVE_REQUEST:
       return update(state, {

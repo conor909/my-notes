@@ -10,6 +10,7 @@ function NotesMenuContainer (props) {
 
   return (
     <Menu
+      selectedNoteId={props.selectedNoteId}
       onSelectNote={props.handleSelectNote}
       notes={props.notes} />
   )
@@ -17,7 +18,8 @@ function NotesMenuContainer (props) {
 
 function mapStateToProps (state) {
   return {
-    notes: state.notes.notes
+    notes: state.notes.notes,
+    selectedNoteId: state.notes.selectedNoteId
   }
 };
 
