@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { notesActions } from '../../../actions'
+import { notesActions } from '../../actions'
 import { connect } from 'react-redux'
 import Menu from './Menu'
 
@@ -9,7 +9,9 @@ function NotesMenu (props) {
   }, [])
 
   return (
-    <Menu notes={props.notes} />
+    <Menu
+      onSelectNote={props.handleSelectNote}
+      notes={props.notes} />
   )
 }
 
@@ -21,7 +23,8 @@ function mapStateToProps (state) {
 
 function dispatchToProps (dispatch) {
   return {
-    getNotes: () => dispatch(notesActions.getNotes())
+    getNotes: () => dispatch(notesActions.getNotes()),
+    handleSelectNote: (noteId) => dispatch(notesActions.selectNote(noteId))
   }
 }
 

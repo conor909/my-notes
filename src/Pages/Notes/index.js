@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import NotesMenu from './Menu'
+import NotesMenu from '../../components/NotesMenu'
+import Editor from '../../components/Editor'
 import './notes.scss'
 
 export function Notes (props) {
@@ -11,7 +12,7 @@ export function Notes (props) {
           <NotesMenu />
         </Col>
         <Col md={8} className='notes--editor'>
-          <h1>Title</h1>
+          <Editor />
         </Col>
       </Row>
     </Container>

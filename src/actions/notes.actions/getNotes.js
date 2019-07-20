@@ -1,6 +1,6 @@
 import { notesConstants, middlewareConstants } from '../../constants'
 
-export default function getNotes (username, password) {
+export default function getNotes () {
   return {
     type: middlewareConstants.API_REQUEST,
     url: '/notes',
@@ -13,18 +13,18 @@ export default function getNotes (username, password) {
 }
 
 function getNotesRequest () {
-  return { type: notesConstants.GET_REQUEST }
+  return { type: notesConstants.NOTES_GET_REQUEST }
 }
 
 function getNotesSuccess (data) {
   return {
-    type: notesConstants.GET_SUCCESS,
+    type: notesConstants.NOTES_GET_SUCCESS,
     notes: data
   }
 }
 
 function getNotesFailure () {
   return {
-    type: notesConstants.GET_FAILURE
+    type: notesConstants.NOTES_GET_FAILURE
   }
 }
