@@ -14,6 +14,7 @@ export function apiMiddleware ({ dispatch }) {
       url: 'http://localhost:8080' + action.url,
       method: action.method || 'get',
       data: action.data || {},
+      params: action.params || {},
       auth: {
         username: 'admin',
         password: '1234'

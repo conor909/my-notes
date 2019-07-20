@@ -72,7 +72,7 @@ export default function (props) {
   }
 
   function handleUpdateNote () {
-    props.updateNote({
+    props.saveNote({
       id: props.note.id,
       note: JSON.stringify(editorState),
       title: noteTitle

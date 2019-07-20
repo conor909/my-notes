@@ -9,7 +9,7 @@ function EditorContainer (props) {
   return (
     <Editor
       note={props.note}
-      updateNote={props.updateNote} />
+      saveNote={props.saveNote} />
   )
 }
 
@@ -21,7 +21,7 @@ function mapStateToProps (state) {
 
 function dispatchToProps (dispatch) {
   return {
-    updateNote: (note) => dispatch(notesActions.updateNote(note))
+    saveNote: (note) => dispatch(notesActions.saveNote(note))
   }
 }
 

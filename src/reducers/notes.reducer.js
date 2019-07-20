@@ -34,26 +34,14 @@ export function notes (state = initialState, action) {
     case notesConstants.NOTE_SAVE_SUCCESS:
       return update(state, {
         savingNote: { $set: false },
-        selectedNoteId: { $set: action.note.id },
-        notes: { $push: [action.note] }
+        notes: {
+          [action.noteIndex]: { $set: action.updatedNote }
+        }
       })
     case notesConstants.NOTE_SAVE_FAILURE:
       return update(state, {
         savingNote: { $set: false }
       })
-    case notesConstants.UPDATE_REQUEST:
-      return {
-        savingNote: true
-      }
-    case notesConstants.UPDATE_SUCCESS:
-      return {
-        savingNote: false,
-        note: action.note
-      }
-    case notesConstants.UPDATE_FAILURE:
-      return {
-        savingNote: false
-      }
     default:
       return state
   }
