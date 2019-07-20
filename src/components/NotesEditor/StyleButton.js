@@ -1,7 +1,6 @@
 import React from 'react'
 
-export default function StyleButton(props) {
-
+export default function StyleButton (props) {
   function onToggle (e) {
     e.preventDefault()
     props.onToggle(props.style)
