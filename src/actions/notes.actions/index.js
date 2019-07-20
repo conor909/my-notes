@@ -1,7 +1,7 @@
-import getNotes from './getNotes'
-import selectNote from './selectNote'
-import createNote from './createNote'
-import saveNote from './saveNote'
+import getNotes from './get-notes'
+import selectNote from './select-note'
+import createNote from './create-note'
+import saveNote from './save-note'
 
 export const notesActions = {
   getNotes,

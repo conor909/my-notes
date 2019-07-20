@@ -29,6 +29,7 @@ export default function (props) {
 
   function onChangeTitle (e) {
     setNoteTitle(e.target.value)
+    setIsEdited(true)
   }
 
   function handleChangeEditorState (newState) {
