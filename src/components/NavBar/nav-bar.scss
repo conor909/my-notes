@@ -1,4 +1,12 @@
-.nav-bar {
+@import '../../scss/variables.scss';
+
+.navbar {
+  border-bottom: 1px solid $border-color;
+
+  .brand--wording {
+    padding-left: 5px
+  }
+
   .nav-bar--mobile-menu {
     padding-bottom: 5px
   }

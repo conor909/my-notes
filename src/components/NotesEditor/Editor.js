@@ -86,7 +86,7 @@ export default function (props) {
     return JSON.stringify(convertToRaw(contentState))
   }
 
-  // const hasBeenEdited = getContentString() !== props.note.note
+  const hasBeenEdited = getContentString() !== props.note.note || noteTitle !== props.note.title
 
   return (
     <div className='editor'>
@@ -113,6 +113,7 @@ export default function (props) {
           spellCheck />
       </div>
       <Button
+        disabled={!hasBeenEdited}
         variant='outline-success'
         onClick={handleSaveNote}>
         Save

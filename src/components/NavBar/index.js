@@ -7,8 +7,11 @@ import './nav-bar.scss'
 
 function NavBarContainer (props) {
   return (
-    <Navbar bg='light' expand='lg'>
-      <Navbar.Brand href='#home'>Notes</Navbar.Brand>
+    <Navbar expand='lg'>
+      <Navbar.Brand href='#home'>
+        <i className='fas fa-pencil-alt' />
+        <span className='brand--wording'>Notes</span>
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
       <Navbar.Collapse id='basic-navbar-nav'>
         <Nav className='mr-auto'>
