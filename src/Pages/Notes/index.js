@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import NotesMenu from '../../components/NotesMenu'
+import { NotesMenu } from '../../components'
 import Editor from '../../components/Editor'
 import './notes.scss'
 

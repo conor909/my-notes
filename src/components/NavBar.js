@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import { notesActions } from '../actions'
+import { NotesMenu } from '../components';
 
 function NavBarContainer (props) {
   return (
@@ -10,8 +11,9 @@ function NavBarContainer (props) {
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
       <Navbar.Collapse id='basic-navbar-nav'>
         <Nav className='mr-auto'>
-          <a>{'link'}</a>
-          <a>{'link'}</a>
+          <div className='d-none d-sm-block d-md-block d-lg-none'>
+            <NotesMenu />
+          </div>
         </Nav>
         <Button
           variant='outline-success'

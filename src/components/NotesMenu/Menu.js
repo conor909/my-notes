@@ -1,8 +1,9 @@
 import React from 'react'
+import './notes-menu.scss'
 
 export default function (props) {
   return (
-    <ul>
+    <ul className='notes--menu'>
       {
         props.notes.map(note => (
           <MenuItem

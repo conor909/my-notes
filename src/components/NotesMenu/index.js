@@ -3,7 +3,7 @@ import { notesActions } from '../../actions'
 import { connect } from 'react-redux'
 import Menu from './Menu'
 
-function NotesMenu (props) {
+function NotesMenuContainer (props) {
   useEffect(() => {
     props.getNotes()
   }, [])
@@ -28,4 +28,4 @@ function dispatchToProps (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, dispatchToProps)(NotesMenu)
+export const NotesMenu = connect(mapStateToProps, dispatchToProps)(NotesMenuContainer)
