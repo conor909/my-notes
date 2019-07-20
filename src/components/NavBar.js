@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Navbar, Nav, Button } from 'react-bootstrap'
+import { notesActions } from '../actions'
 
-export function NavBar (props) {
+function NavBarContainer (props) {
   return (
     <Navbar bg='light' expand='lg'>
       <Navbar.Brand href='#home'>Notes</Navbar.Brand>
@@ -11,8 +13,22 @@ export function NavBar (props) {
           <a>{'link'}</a>
           <a>{'link'}</a>
         </Nav>
-        <Button variant='outline-success'>+ Create</Button>
+        <Button
+          variant='outline-success'
+          onClick={props.handleCreateNote}>
+            + Create
+        </Button>
       </Navbar.Collapse>
     </Navbar>
   )
 }
+
+const mapStateToProps = (state) => ({})
+
+function dispatchToProps (dispatch) {
+  return {
+    handleCreateNote: () => dispatch(notesActions.createNote())
+  }
+}
+
+export const NavBar = connect(mapStateToProps, dispatchToProps)(NavBarContainer)

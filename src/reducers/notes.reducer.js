@@ -27,6 +27,11 @@ export function notes (state = initialState, action) {
       return update(state, {
         selectedNoteId: { $set: action.noteId }
       })
+    case notesConstants.NOTE_CREATE:
+      return update(state, {
+        selectedNoteId: { $set: action.newNote.id },
+        notes: { $push: [action.newNote] }
+      })
     case notesConstants.SAVE_REQUEST:
       return {
         savingNote: true
