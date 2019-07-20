@@ -15,3 +15,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+.page {
+  padding: 0;
+  flex: 1;
+
+  .page--content {
+    height: 100%;
+  }
+}

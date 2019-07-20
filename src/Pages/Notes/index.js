@@ -1,20 +1,14 @@
 import React from 'react'
-import './notes.scss'
 import { Container, Row, Col } from 'react-bootstrap'
+import NotesMenu from './Menu'
+import './notes.scss'
 
-// TODO Layout scaffolding
-
-export function Notes () {
+export function Notes (props) {
   return (
-    <Container fluid className='notes'>
-      <Row noGutters>
+    <Container fluid className='page notes'>
+      <Row noGutters className='page--content'>
         <Col md={4} className='notes--menu d-none d-md-block'>
-          <ul>
-            <li className='notes--menu-item'>
-              <div>{'Title'}</div>
-              <div>{'>'}</div>
-            </li>
-          </ul>
+          <NotesMenu />
         </Col>
         <Col md={8} className='notes--editor'>
           <h1>Title</h1>

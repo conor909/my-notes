@@ -14,5 +14,5 @@ export function NavBar (props) {
         <Button variant='outline-success'>+ Create</Button>
       </Navbar.Collapse>
     </Navbar>
-)
+  )
 }

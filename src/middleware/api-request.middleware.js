@@ -10,15 +10,19 @@ export function apiMiddleware ({ dispatch }) {
     const { request, success, failure } = action.passToActions
     dispatch(request())
     axios({
-      url: 'http://localhost:8080/' + action.url,
-      method: 'post',
-      data: action.data || {}
+      url: 'http://localhost:8080' + action.url,
+      method: action.method || 'get',
+      data: action.data || {},
+      auth: {
+        username: 'admin',
+        password: '1234'
+      }
     })
       .then((response) => {
         if (response.status === 200) {
-          dispatch(success(response.data, action.passToReducers))
+          dispatch(success(response.data.data))
         } else {
-          dispatch(failure(response.data, action.passToReducers))
+          dispatch(failure(response.message))
         }
       })
   }

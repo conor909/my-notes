@@ -1,4 +1,5 @@
 import { notesConstants } from '../constants'
+import update from 'immutability-helper'
 
 const initialState = {
   loadingNotes: false,
@@ -9,14 +10,14 @@ const initialState = {
 export function notes (state = initialState, action) {
   switch (action.type) {
     case notesConstants.GET_REQUEST:
-      return {
-        loadingNotes: true
-      }
+      return update(state, {
+        loadingNotes: { $set: true }
+      })
     case notesConstants.GET_SUCCESS:
-      return {
-        loadingNotes: false,
-        notes: action.notes
-      }
+      return update(state, {
+        loadingNotes: { $set: false },
+        notes: { $set: action.notes }
+      })
     case notesConstants.GET_FAILURE:
       return {
         loadingNotes: false
