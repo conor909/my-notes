@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Button } from 'react-bootstrap'
-import { Editor, EditorState, RichUtils } from 'draft-js'
+import { Button } from 'react-bootstrap'
+import { Editor, EditorState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js'
 import BlockStyleControls from './BlockStyleControls'
 import InlineStyleControls from './InlineStyleControls'
+import TitleEditor from './TitleEditor'
 import 'draft-js/dist/Draft.css'
 import './editor.scss'
 
@@ -13,13 +14,14 @@ export default function (props) {
 
   useEffect(() => {
     setNoteTitle(note.title)
+    setEditorState(getNoteState(note))
   }, [note])
 
   function getNoteState (note) {
-    if (!note.note) {
-      return EditorState.createEmpty()
+    if (note.note) {
+      return EditorState.createWithContent(convertFromRaw(JSON.parse(note.note)))
     } else {
-      return note.note
+      return EditorState.createEmpty()
     }
   }
 
@@ -72,19 +74,18 @@ export default function (props) {
   }
 
   function handleUpdateNote () {
+    const contentState = editorState.getCurrentContent()
     props.saveNote({
       id: props.note.id,
-      note: JSON.stringify(editorState),
+      note: JSON.stringify(convertToRaw(contentState)),
       title: noteTitle
     })
   }
 
   return (
     <div className='editor'>
-      <Form.Control
-        type='text'
-        value={noteTitle}
-        className='editor--edit-title'
+      <TitleEditor
+        title={noteTitle}
         onChange={onChangeTitle} />
       <div className='editor--edit-styles'>
         <BlockStyleControls
@@ -106,7 +107,6 @@ export default function (props) {
           spellCheck />
       </div>
       {
-        note.note !== editorState &&
         <Button
           variant='outline-success'
           onClick={handleUpdateNote}>
