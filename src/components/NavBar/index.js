@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import { notesActions } from '../../actions'
@@ -27,6 +28,10 @@ function NavBarContainer (props) {
       </Navbar.Collapse>
     </Navbar>
   )
+}
+
+NavBarContainer.propTypes = {
+  handleCreateNote: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({})
