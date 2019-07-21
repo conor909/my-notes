@@ -1,7 +1,7 @@
 import { notesConstants } from '../constants'
 import update from 'immutability-helper'
 
-const initialState = {
+export const initialState = {
   loadingNotes: false,
   savingNote: false,
   creatingNote: false,
