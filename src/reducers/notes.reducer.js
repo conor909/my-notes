@@ -31,7 +31,7 @@ export function notes (state = initialState, action) {
     case notesConstants.NOTE_CREATE_REQUEST:
       return update(state, {
         creatingNote: { $set: true },
-        notes: { $push: [action.newNote] }
+        notes: { $splice: [[0, 0, action.newNote]] }
       })
     case notesConstants.NOTE_CREATE_SUCCESS:
       return update(state, {

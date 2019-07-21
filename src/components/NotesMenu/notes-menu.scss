@@ -27,10 +27,11 @@
     &:hover::before {
       opacity: 1;
     }
+  }
 
-    &:active {
-      box-shadow: 0 0px 10px 10px rgba(0, 0, 0, 0.1);
-    }
+  .active {
+    background: #fffcf8;
+    color: #ffb451;
   }
 
   
