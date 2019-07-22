@@ -18,7 +18,7 @@ function NotesMenuContainer (props) {
 }
 
 NotesMenuContainer.propTypes = {
-  notes: PropTypes.array,
+  notes: PropTypes.array.isRequired,
   selectedNoteId: PropTypes.number,
   getNotes: PropTypes.func.isRequired,
   handleSelectNote: PropTypes.func.isRequired

@@ -118,7 +118,7 @@ export default function (props) {
       <div className='editor--action-buttons'>
         <Button
           disabled={!isEdited}
-          variant='outline-success'
+          variant={`${!isEdited ? 'outline-' : ''}success`}
           onClick={handleSaveNote}>
             Save
         </Button>

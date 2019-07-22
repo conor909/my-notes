@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Emoji from 'a11y-react-emoji'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import { notesActions } from '../../actions'
 import { NotesMenu } from '../../components'
@@ -10,7 +11,9 @@ function NavBarContainer (props) {
   return (
     <Navbar expand='lg'>
       <Navbar.Brand href='#home'>
-        <i className='fas fa-pencil-alt' />
+        <span className='brand--icon'>
+          <Emoji symbol='✍️' label='writing note' />
+        </span>
         <span className='brand--wording'>Notes</span>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
