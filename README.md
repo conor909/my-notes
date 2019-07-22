@@ -1,8 +1,8 @@
 ## Available Scripts
 
-### `npm start`
-
-### `npm test`
+### `yarn`
+### `yarn start`
+### `yarn test`
 
 ### `docker run --name note-service -p 8080:8080 -d berkay/note-service`
 
